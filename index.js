@@ -1,20 +1,24 @@
 var katsDeliLine = [];
 var testArr =[];
 
+
 function takeANumber(currentLine, newPerson){
   //extra assignment to fix .push is not a function error
-  var arr = [];
-  arr = currentLine;
+  currentLine.push(newPerson);
   
   //we add the newPerson into the currentLine
-  arr.push(newPerson);
-  
+
   //find the just added person in the currentLine and give the position they are in. It would be +1 since arrays start at 0.
-  for(var i = 0; i < arr.length; i++){
-    if(arr[i] === newPerson){
-      return `Welcome, ${newPerson}. You are number ${parseInt(i)+1} in line.`;
-    }
-  }
+
+      return `Welcome, ${newPerson}. You are number ${currentLine.length} in line.`;
+}
+var ticket = 0;
+
+function takeANumber(currentLine){
+  ticket++
+  currentLine.push(ticket);
+  //Welcome you have ticket number [number]
+  return `Welcome you have ticket number ${ticket}`;
 }
 
 console.log(takeANumber(katsDeliLine, 'Ada'));
@@ -23,7 +27,7 @@ console.log(takeANumber(katsDeliLine, 'Kent'));
 
 function nowServing(currentLine){
   //if the first item in the array is undefined then there is no one in the currentLine.
-  if(currentLine[0] === undefined){
+  if(currentLine.length === 0){
     return "There is nobody waiting to be served!"
   } else {
     //splice removes the first name in the array and returns it
